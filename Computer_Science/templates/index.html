@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div[class = "highlight"]{
+            border: 1px solid gray;
+            margin: auto;
+            width:50%;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <h1><li>What is project in django?</li></h1>
+    <h3><li>A project in django is analogous to a website.Once we have a project ,
+    we can host it using any wsgi supported server.</li></h3>
+
+</ul>
+<p>&nbsp;</p>
+<div><span style = "font-size: 30px"><b>Note :- </b></span><span style = "border:1px solid black;color: white;background-color:black">django-admin.py</span> is a project utility that ships with django. In addition to the
+<u>startproject</u> subcommand, it also includes a lot of helper subcommands that can be
+    helpful while maintaining a django project.</h3></div>
+<p>&nbsp;</p>
+<ul>
+    <h2><li><span style = "color:white;border:1px solid black;background-color:black">__init.py__ </span>is an <u><i>empty file</i> </u>required to recognize this project
+    as a python module.</li></h2>
+</ul>
+<p>&nbsp;</p>
+<ul>
+   <h2> <li>
+        <span style = "color:white;border: 1px solid black;background-color:black;">manage.py</span>
+        is a script that is similar to <span style = "color:white;border: 1px solid black;background-color:black;">django_admin.py</span>
+        which allows to manage this project. It has subcommands to :-
+       <p>&nbsp;</p>
+       <ol>
+           <li>start a development server</li>
+           <li>interact with db</li>
+           <li>backup or restore etc...</li>
+       </ol>
+    </li></h2>
+</ul>
+<p>&nbsp;</p>
+<ul>
+   <h2> <li>
+        <span style = "color:white;border: 1px solid black;background-color:black;">
+            settings.py
+        </span>
+        is a list of project wide settings with some default values. You will need to edit
+        this often when installing new django applications, deployment etc.
+
+    </li></h2>
+</ul>
+<p>&nbsp;</p>
+<ul>
+   <h2> <li>
+        <span style = "color:white;border: 1px solid black;background-color:black;">
+            views.py
+        </span>
+        is similar to the <span style = "color:white;border: 1px solid black;background-color:black;">
+            Controller of MVC architecture
+        </span>
+        because it contains all the necessary action of the website.
+
+    </li></h2>
+</ul>
+<p>&nbsp;</p>
+<ul>
+    <h2>
+        <li>
+            <span style = "color:white;border: 1px solid black;background-color:black;">
+            urls.py
+        </span>
+            -
+            <u>Controls the Entry point of website</u>
+            <div> It contains <i>urlpatterns</i> as list DS. All incoming urls
+            are matched with the regexes in the <i>urlpatterns</i> and the view
+            corresponding to the first match will get to handle the request.</div>
+        </li>
+    </h2>
+</ul>
+<h2>
+    <ul>
+        <li>
+            A <span style = "color:white; background-color:black; border: 1px solid black;">template</span>
+            is a structure of webpage that will be <i>rendered</i>
+            using a <i>context</i> and returned as response if we want it to.
+
+        </li>
+        <ul>
+            <li>
+                <h4>A <span style = "color:white;background-color:black;border:1px solid black;">django.template.Template</span>
+                 object can be rendered using the <span style = "color:white;background-color:black;border: 1px solid black;">render</span>
+                method.</h4>
+            </li>
+
+        </ul>
+
+
+        <ul>
+    <li>
+        <h4>Normally templates are HTML files
+            with some extra django content, such as <u>templatetags</u>
+        and <u>variables</u>.</h4>
+    </li>
+</ul>
+    </ul>
+</h2>
+
+<p>&nbsp;</p>
+<h3>Note :- Our templates need not be publicly accessible
+from a webserver.They are not meant to be displayed
+    directly;django will process them based on the request, context etc..
+    and respond with the rendered templates.
+</h3>
+<p>&nbsp;</p>
+<ul>
+    <h2><li>
+        By default, Django uses a <i>filesystem-based template loader</i>
+        , but django comes with a few other template loaders, which know how to load templates from other sources.
+    </li></h2>
+    <ul>
+        <h3><li>
+            Some of these other loaders are disabled by default,
+            but you can activate them by adding a <i>'loaders'</i>
+            option to your <i>DjangoTemplates </i>backend in the TEMPLATES setting
+            or passing a loaders argument to Engine.
+        </li></h3>
+    </ul>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+<p>&nbsp;</p>
+<ul>
+    <li>
+        <h2>Syntax of <u><i>urlconf </i></u>entry :-</h2>
+        <div class="highlight"><pre><span></span><span class="p">(</span><span class="sa">r</span><span class="s1">'&lt;regex&gt;'</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">view_function</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">arg_dict</span><span class="o">&gt;</span><span class="p">),</span>
+</pre></div>
+    </li>
+    <ul>
+        <li>
+            <h3>
+                <span style = "border: 1px solid gray; color:white;background-color: black;">regex</span>
+                is any valid <u>python regex</u> that has to be
+                processed.
+            </h3>
+            <h3><i>regex</i> absolute in --------<sub>> </sub><i>project urls.py</i></h3>
+            <h3><i>regex</i> relative in --------><i>app's urls.py</i></h3>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <h3><span style = "border: 1px solid gray; background-color:black;color:white;">view_function</span>
+            is a function that corresponds to the url and must
+                return a <i>HttpResponse</i> object usually <i>"shortcuts such as render are used".</i>
+            </h3>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <h3>
+                <span style = "color:white;background-color:black;border: 1px solid gray;">arg_dict</span>
+                is an optional dict of arguments that will be
+                passed to the <u>view_function</u>.
+            </h3>
+        </li>
+    </ul>
+</ul>
+
+    <ul>
+        <li>
+          <h2>  Loader loads templates from Django apps on the <i>filesystem</i>.
+          </h2>
+        </li>
+    </ul>
+
+<ul>
+        <li>
+          <h2>
+              For each app in INSTALLED_APPS, the loader
+              looks for a templates subdirectory.If the directory
+              exists, Django looks for templates in there.
+          </h2>
+        </li>
+    </ul>
+
+<a href = "{% url '/' %}">Go To admin</a>
+
+</body>
+</html>
